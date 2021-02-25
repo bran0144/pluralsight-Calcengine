@@ -8,10 +8,10 @@ public class Main {
 //	    char[] opCodes = {'d', 'a', 's', 'm'};
 //	    double[] results = new double[opCodes.length];
 		MathEquation[] equations = new MathEquation[4];
-		equations[0] = create(100.0, 50.0, 'd');
-		equations[1] = create(25.0, 92.0, 'a');
-		equations[2] = create(225.0, 17.0, 's');
-		equations[3] = create(11.0, 3.0, 'm');
+		equations[0] = new MathEquation('d', 50.0, 50.0);
+		equations[1] = new MathEquation('a', 92.0, 25.0);
+		equations[2] = new MathEquation('s', 17.0, 225.0);
+		equations[3] = new MathEquation('m', 3.0, 11.0);
 
 
 	    for(MathEquation equation: equations) {
@@ -20,12 +20,12 @@ public class Main {
 	        System.out.println(equation.getResult());
     }
 }
-public static MathEquation create(double leftVal, double rightVal, char opCode) {
-    	MathEquation equation = new MathEquation();
-    	equation.setLeftVal(leftVal);
-    	equation.setRightVal(rightVal);
-    	equation.setOpCode(opCode);
-
-    	return equation;
-}
+//public static MathEquation create(double leftVal, double rightVal, char opCode) {
+//    	MathEquation equation = new MathEquation();
+//    	equation.setLeftVal(leftVal);
+//    	equation.setRightVal(rightVal);
+//    	equation.setOpCode(opCode);
+//
+//    	return equation;
+//}
 }
