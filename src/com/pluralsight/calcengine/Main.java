@@ -38,12 +38,5 @@ public class Main {
 		System.out.println("result = ");
 		System.out.println(equationOverload.getResult());
 }
-//public static MathEquation create(double leftVal, double rightVal, char opCode) {
-//    	MathEquation equation = new MathEquation();
-//    	equation.setLeftVal(leftVal);
-//    	equation.setRightVal(rightVal);
-//    	equation.setOpCode(opCode);
-//
-//    	return equation;
-//}
+
 }
