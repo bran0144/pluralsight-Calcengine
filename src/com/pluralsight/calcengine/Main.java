@@ -14,6 +14,9 @@ public class Main {
 		equations[3] = new MathEquation('m', 3.0, 11.0);
 
 		String[] statements = {
+				"add 1.0", // Error:incorrect number of values
+				"add xx 25.0", // Error:non-numeric data
+				"addX 0.0 0.0", // Error: invalid command
 				"divide 100.0 50.0",
 				"add 25.0 92.0",
 				"subtract 225.0 17.0",
@@ -22,10 +25,15 @@ public class Main {
 
 		CalculateHelper helper = new CalculateHelper();
 		for(String statement:statements) {
-			helper.process(statement);
-			System.out.println(helper);
+			try {
+				helper.process(statement);
+				System.out.println(helper);
+			} catch (InvalidStatementException e) {
+				System.out.println(e.getMessage());
+				if (e.getCause() != null)
+					System.out.println("  Original exception: " + e.getCause().getMessage());
+			}
 		}
-
 	    for(MathEquation equation: equations) {
 	    	equation.execute();
 	        System.out.println("result = ");
