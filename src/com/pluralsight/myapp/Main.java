@@ -1,14 +1,7 @@
 package com.pluralsight.myapp;
 
 
-import com.pluralsight.calcengine.Adder;
-import com.pluralsight.calcengine.CalculateBase;
-import com.pluralsight.calcengine.CalculateHelper;
-import com.pluralsight.calcengine.Divider;
-import com.pluralsight.calcengine.InvalidStatementException;
-import com.pluralsight.calcengine.MathEquation;
-import com.pluralsight.calcengine.Multiplier;
-import com.pluralsight.calcengine.Subtractor;
+import com.pluralsight.calcengine.*;
 
 public class Main {
 
@@ -23,21 +16,35 @@ public class Main {
 		equations[2] = new MathEquation('s', 17.0, 225.0);
 		equations[3] = new MathEquation('m', 3.0, 11.0);
 
-		String[] statements = {
-				"add 1.0", // Error:incorrect number of values
-				"add xx 25.0", // Error:non-numeric data
-				"addX 0.0 0.0", // Error: invalid command
-				"divide 100.0 50.0",
-				"add 25.0 92.0",
-				"subtract 225.0 17.0",
-				"multiply 11.0 3.0"
-		};
 
-		CalculateHelper helper = new CalculateHelper();
+		String[] statements = {
+				"add 25.0 92.0",
+		};
+		DynamicHelper helper = new DynamicHelper(new MathProcessing[] {
+			new Adder()
+		});
+		for(String statement:statements) {
+			String output = helper.process(statement);
+			System.out.println(output);
+		}
+
+//		static void useCalculateHelper() {
+//			String[] statements = {
+//					"add 1.0", // Error:incorrect number of values
+//					"add xx 25.0", // Error:non-numeric data
+//					"addX 0.0 0.0", // Error: invalid command
+//					"divide 100.0 50.0",
+//					"add 25.0 92.0",
+//					"subtract 225.0 17.0",
+//					"multiply 11.0 3.0"
+//			};
+//		}
+
+		CalculateHelper helper1 = new CalculateHelper();
 		for(String statement:statements) {
 			try {
-				helper.process(statement);
-				System.out.println(helper);
+				helper1.process(statement);
+				System.out.println(helper1);
 			} catch (InvalidStatementException e) {
 				System.out.println(e.getMessage());
 				if (e.getCause() != null)
